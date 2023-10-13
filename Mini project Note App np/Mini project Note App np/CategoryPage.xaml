@@ -1,7 +1,7 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Mini_project_Note_App_np.MainPage"
+             x:Class="Mini_project_Note_App_np.CategoryPage"
              BackgroundColor="White">
 
     <ScrollView>
@@ -9,10 +9,11 @@
             Spacing="25"
             Padding="30,0"
             VerticalOptions="Center">
+			<Label Text="hmm" TextColor="Black" />
 
-            <CollectionView ItemsSource="{Binding Categories}" HorizontalOptions="Center">
+            <CollectionView ItemsSource="{Binding Category}" HorizontalOptions="Center">
                 <CollectionView.ItemsLayout>
-                    <GridItemsLayout Orientation="Vertical" Span="2"/>
+                    <GridItemsLayout Orientation="Vertical" Span="1"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
@@ -23,7 +24,6 @@
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="Auto" />
-                                <ColumnDefinition Width="Auto" />
                             </Grid.ColumnDefinitions>
                             <Border Stroke="Black"
                                 StrokeThickness="2"
@@ -33,9 +33,6 @@
                                 HeightRequest="200"
                                 HorizontalOptions="Center"
                                 StrokeShape="RoundRectangle 40,40,40,40">
-                                <Border.GestureRecognizers>
-                                    <TapGestureRecognizer Tapped="OnCategoryTapped" />
-                                </Border.GestureRecognizers>
                                 <Label Text="{Binding Title}"
                                    TextColor="Black"
                                    FontSize="18"
@@ -47,7 +44,7 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-            
+
         </VerticalStackLayout>
     </ScrollView>
 

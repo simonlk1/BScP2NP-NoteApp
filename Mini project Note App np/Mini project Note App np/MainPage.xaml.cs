@@ -7,15 +7,34 @@ public partial class MainPage : ContentPage
 	public ObservableCollection<Category> Categories { get; set; }
 	public MainPage()
 	{
+		var hmmCategory = new Category()
+		{
+			Title = "hmm",
+			Notes = new ObservableCollection<Note>()
+			{
+				new Note()
+				{
+					Title = "Navy Seals",
+					Content = "What the fuck ..."
+				}
+			}
+		};
 		Categories = new ObservableCollection<Category>()
 		{
-            new Category() { Title = "Test Title"},
-			new Category() { Title = "Test Title 2"},
-			new Category() { Title = "Test Title3"}
+            new Category() { Title = "School"},
+			hmmCategory,
+			new Category() { Title = "(ono)"},
+			new Category() { Title = "Stuff I should remember"},
+            new Category() { Title = "Workouts"}
         };
 
 		InitializeComponent();
 		BindingContext = this;
+	}
+
+	public void OnCategoryTapped(object sender, EventArgs e)
+	{
+		Navigation.PushAsync(new CategoryPage(Categories.Take(2).Last()));
 	}
 }
 
