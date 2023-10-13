@@ -1,24 +1,21 @@
-﻿namespace Mini_project_Note_App_np;
+﻿using System.Collections.ObjectModel;
+
+namespace Mini_project_Note_App_np;
 
 public partial class MainPage : ContentPage
 {
-	int count = 0;
-
+	public ObservableCollection<Category> Categories { get; set; }
 	public MainPage()
 	{
+		Categories = new ObservableCollection<Category>()
+		{
+            new Category() { Title = "Test Title"},
+			new Category() { Title = "Test Title 2"},
+			new Category() { Title = "Test Title3"}
+        };
+
 		InitializeComponent();
-	}
-
-	private void OnCounterClicked(object sender, EventArgs e)
-	{
-		count++;
-
-		if (count == 1)
-			CounterBtn.Text = $"Clicked {count} time";
-		else
-			CounterBtn.Text = $"Clicked {count} times";
-
-		SemanticScreenReader.Announce(CounterBtn.Text);
+		BindingContext = this;
 	}
 }
 
